@@ -1,0 +1,3 @@
+[submodule "MetalANGLE"]
+	path = third_party/MetalANGLE
+	url = https://github.com/kakashidinho/metalangle.git

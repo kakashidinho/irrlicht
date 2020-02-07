@@ -1,3 +1,19 @@
+This is an experimental fork of Irrlicht Engine's ogl-es branch.
+It experments the integration with MetalANGLE - OpenGL ES to Metal draw calls
+translation layer. See https://github.com/kakashidinho/metalangle
+The integration with MetalANGLE would help avoid Apple's deprecation or even
+removal of OpenGL ES in future.
+
+Current status:
+- iOS & Mac Catalyst versions have been ported.
+
+Build instructions for iOS:
+- Run git submodule update --init
+- Read third_party/MetalANGLE/README.md for more details on how to fetch
+MetalANGLE's dependencies.
+- Open Xcode project: source/Irrlicht/examples/BuildAllExamples.workspace
+- Run "28.HelloWorld_iOS" target.
+
 ==========================================================================
 The Irrlicht Engine SDK version 1.9
 ==========================================================================

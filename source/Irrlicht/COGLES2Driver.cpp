@@ -106,7 +106,7 @@ COGLES2Driver::~COGLES2Driver()
 
 	bool COGLES2Driver::genericDriverInit(const core::dimension2d<u32>& screenSize, bool stencilBuffer)
 	{
-		Name = glGetString(GL_VERSION);
+		Name = glGetString(GL_RENDERER);
 		printVersion();
 
 		// print renderer information
@@ -2935,11 +2935,6 @@ COGLES2Driver::~COGLES2Driver()
 		// some bug on Emscripten and browsing discussions by others lead me to believe
 		// it means they have to be equal. Note that this was different in OpenGL.
 		internalFormat = pixelFormat;
-
-#ifdef _IRR_IOS_PLATFORM_
-		if (internalFormat == GL_BGRA)
-			internalFormat = GL_RGBA;
-#endif
 
 		return supported;
 	}
