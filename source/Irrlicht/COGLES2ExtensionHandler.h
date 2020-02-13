@@ -28,6 +28,13 @@ namespace video
 	public:
 		COGLES2ExtensionHandler() : COGLESCoreExtensionHandler() {}
 
+		// Some platforms create OpenGL ES 3.0 context even though 2.0
+		// is requested. So need to check here
+		bool isVersion3OrAbove() const
+		{
+			return Version >= 300;
+		}
+
 		void initExtensions();
 
 		bool queryFeature(video::E_VIDEO_DRIVER_FEATURE feature) const

@@ -2829,14 +2829,23 @@ COGLES2Driver::~COGLES2Driver()
 #endif
 		case ECF_D16:
 			supported = true;
+			if (Version >= 300)
+			{
+				internalFormat = GL_DEPTH_COMPONENT16_OES;
+			}
 			pixelFormat = GL_DEPTH_COMPONENT;
 			pixelType = GL_UNSIGNED_SHORT;
 			break;
 		case ECF_D32:
 #if defined(GL_OES_depth32)
-			if (queryGLESFeature(COGLESCoreExtensionHandler::IRR_GL_OES_depth32))
+			if (Version >= 300 ||
+				queryGLESFeature(COGLESCoreExtensionHandler::IRR_GL_OES_depth32))
 			{
 				supported = true;
+				if (Version >= 300)
+				{
+					internalFormat = GL_DEPTH_COMPONENT24_OES;
+				}
 				pixelFormat = GL_DEPTH_COMPONENT;
 				pixelType = GL_UNSIGNED_INT;
 			}
@@ -2844,9 +2853,14 @@ COGLES2Driver::~COGLES2Driver()
 			break;
 		case ECF_D24S8:
 #ifdef GL_OES_packed_depth_stencil
-			if (queryGLESFeature(COGLESCoreExtensionHandler::IRR_GL_OES_packed_depth_stencil))
+			if (Version >= 300 ||
+				queryGLESFeature(COGLESCoreExtensionHandler::IRR_GL_OES_packed_depth_stencil))
 			{
 				supported = true;
+				if (Version >= 300)
+				{
+					internalFormat = GL_DEPTH24_STENCIL8_OES;
+				}
 				pixelFormat = GL_DEPTH_STENCIL_OES;
 				pixelType = GL_UNSIGNED_INT_24_8_OES;
 			}
@@ -2952,7 +2966,14 @@ COGLES2Driver::~COGLES2Driver()
 		// Doesn't mention if "match" means "equal" or some other way of matching, but
 		// some bug on Emscripten and browsing discussions by others lead me to believe
 		// it means they have to be equal. Note that this was different in OpenGL.
-		internalFormat = pixelFormat;
+		//
+		// NOTE: for depth format and context created is version 3.0, this requirement
+		// is not true anymore. Some platform such as ANGLE might create context 3.0
+		// even though version 2.0 is requested.
+		if (Version < 300 || !IImage::isDepthFormat(format))
+		{
+			internalFormat = pixelFormat;
+		}
 
 		return supported;
 	}
