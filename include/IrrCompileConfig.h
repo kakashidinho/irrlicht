@@ -87,6 +87,7 @@
 #define _IRR_IOS_PLATFORM_
 #define _IRR_COMPILE_WITH_IOS_DEVICE_
 #define NO_IRR_COMPILE_WITH_OPENGL_
+#define NO_IRR_COMPILE_WITH_OGLES1_
 // The application state events and following methods: IrrlichtDevice::isWindowActive, IrrlichtDevice::isWindowFocused,
 // IrrlichtDevice::isWindowMinimized works out of box only if you'll use built-in CIrrDelegateiOS,
 // so _IRR_COMPILE_WITH_IOS_BUILTIN_MAIN_ must be enabled in this case. If you need a custom UIApplicationDelegate
@@ -95,9 +96,9 @@
 #else
 #define _IRR_OSX_PLATFORM_
 #define _IRR_COMPILE_WITH_OSX_DEVICE_
+// Use MetalANGLE instead of native OpenGL which is deprecated
+#define NO_IRR_COMPILE_WITH_OPENGL_
 #define NO_IRR_COMPILE_WITH_OGLES1_
-#define NO_IRR_COMPILE_WITH_OGLES2_
-#define NO_IRR_COMPILE_WITH_WEBGL1_
 #endif
 #endif
 
@@ -228,12 +229,10 @@ define out. */
 //! Define _IRR_COMPILE_WITH_OGLES1_ to compile the Irrlicht engine with OpenGL ES 1.1.
 /** If you do not wish the engine to be compiled with OpenGL ES 1.1, comment this
 define out. */
-// #define _IRR_COMPILE_WITH_OGLES1_
+#define _IRR_COMPILE_WITH_OGLES1_
 #ifdef NO_IRR_COMPILE_WITH_OGLES1_
 #undef _IRR_COMPILE_WITH_OGLES1_
 #endif
-
-#define _IRR_COMPILE_WITH_OGLES2_
 
 //! Define required options for OpenGL ES 1.1 drivers.
 #if defined(_IRR_COMPILE_WITH_OGLES1_)
@@ -246,6 +245,8 @@ define out. */
 #ifndef _IRR_COMPILE_WITH_EAGL_MANAGER_
 #define _IRR_COMPILE_WITH_EAGL_MANAGER_
 #endif
+#elif defined(_IRR_COMPILE_WITH_OSX_DEVICE_)
+#define _IRR_COMPILE_WITH_EGL_MANAGER_
 #endif
 #endif
 
@@ -278,6 +279,8 @@ define out. */
 #ifndef _IRR_COMPILE_WITH_EAGL_MANAGER_
 #define _IRR_COMPILE_WITH_EAGL_MANAGER_
 #endif
+#elif defined(_IRR_COMPILE_WITH_OSX_DEVICE_)
+#define _IRR_COMPILE_WITH_EGL_MANAGER_
 #endif
 #endif
 

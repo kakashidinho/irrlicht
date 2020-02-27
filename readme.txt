@@ -6,13 +6,15 @@ removal of OpenGL ES in future.
 
 Current status:
 - iOS & Mac Catalyst versions have been ported.
+- macOS versions has been ported. Most of macOS sample apps are working
+correctly.
 
-Build instructions for iOS:
+Build instructions for iOS & macOS:
 - Run git submodule update --init
 - Read third_party/MetalANGLE/README.md for more details on how to fetch
 MetalANGLE's dependencies.
 - Open Xcode project: source/Irrlicht/examples/BuildAllExamples.workspace
-- Run "28.HelloWorld_iOS" target.
+- Run "28.HelloWorld_iOS" or "01.HelloWorld" target.
 
 ==========================================================================
 The Irrlicht Engine SDK version 1.9

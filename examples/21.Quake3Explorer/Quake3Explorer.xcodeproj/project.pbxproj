@@ -7,17 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A3F8A772408247B00DAC128 /* MetalANGLE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3F8A762408247B00DAC128 /* MetalANGLE.framework */; };
+		0A3F8A782408247B00DAC128 /* MetalANGLE.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0A3F8A762408247B00DAC128 /* MetalANGLE.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5E34CC751B7F8EEF00F212E8 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E34CC741B7F8EEF00F212E8 /* main.cpp */; };
 		5E3A0F831C1108A100545D10 /* q3factory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A0F7F1C1108A100545D10 /* q3factory.cpp */; };
 		5E3A0F841C1108A100545D10 /* sound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A0F811C1108A100545D10 /* sound.cpp */; };
 		5E8570B61B7F9A3200B267D2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8570B01B7F99F500B267D2 /* Cocoa.framework */; };
 		5E8570B71B7F9A3200B267D2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8570B41B7F9A0700B267D2 /* IOKit.framework */; };
-		5E8570B81B7F9A3200B267D2 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8570B21B7F99FE00B267D2 /* OpenGL.framework */; };
 		5E8570BF1B7F9D3A00B267D2 /* media in Resources */ = {isa = PBXBuildFile; fileRef = 5E8570BE1B7F9D3A00B267D2 /* media */; };
 		5E8571181B7FBE8D00B267D2 /* libIrrlicht.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E34CC781B7F90A000F212E8 /* libIrrlicht.a */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		0A3F8A792408247B00DAC128 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0A3F8A782408247B00DAC128 /* MetalANGLE.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		0A3F8A762408247B00DAC128 /* MetalANGLE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MetalANGLE.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E34CC511B7F8E6E00F212E8 /* 21.Quake3Explorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 21.Quake3Explorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E34CC741B7F8EEF00F212E8 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		5E34CC781B7F90A000F212E8 /* libIrrlicht.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libIrrlicht.a; path = ../../lib/OSX/libIrrlicht.a; sourceTree = "<group>"; };
@@ -26,7 +42,6 @@
 		5E3A0F811C1108A100545D10 /* sound.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sound.cpp; sourceTree = "<group>"; };
 		5E3A0F821C1108A100545D10 /* sound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sound.h; sourceTree = "<group>"; };
 		5E8570B01B7F99F500B267D2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		5E8570B21B7F99FE00B267D2 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		5E8570B41B7F9A0700B267D2 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		5E8570BE1B7F9D3A00B267D2 /* media */ = {isa = PBXFileReference; lastKnownFileType = folder; name = media; path = ../../media; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -38,7 +53,7 @@
 			files = (
 				5E8570B61B7F9A3200B267D2 /* Cocoa.framework in Frameworks */,
 				5E8570B71B7F9A3200B267D2 /* IOKit.framework in Frameworks */,
-				5E8570B81B7F9A3200B267D2 /* OpenGL.framework in Frameworks */,
+				0A3F8A772408247B00DAC128 /* MetalANGLE.framework in Frameworks */,
 				5E8571181B7FBE8D00B267D2 /* libIrrlicht.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -46,6 +61,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A3F8A752408247B00DAC128 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0A3F8A762408247B00DAC128 /* MetalANGLE.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5E34C6D81B7F4A0C00F212E8 = {
 			isa = PBXGroup;
 			children = (
@@ -57,6 +80,7 @@
 				5E34CC761B7F905600F212E8 /* Libraries */,
 				5E34CC521B7F8E6E00F212E8 /* Products */,
 				5E34CC771B7F906D00F212E8 /* Resources */,
+				0A3F8A752408247B00DAC128 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -73,7 +97,6 @@
 			children = (
 				5E8570B01B7F99F500B267D2 /* Cocoa.framework */,
 				5E8570B41B7F9A0700B267D2 /* IOKit.framework */,
-				5E8570B21B7F99FE00B267D2 /* OpenGL.framework */,
 				5E34CC781B7F90A000F212E8 /* libIrrlicht.a */,
 			);
 			name = Libraries;
@@ -97,6 +120,7 @@
 				5E34CC4D1B7F8E6E00F212E8 /* Sources */,
 				5E34CC4E1B7F8E6E00F212E8 /* Frameworks */,
 				5E34CC4F1B7F8E6E00F212E8 /* Resources */,
+				0A3F8A792408247B00DAC128 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -125,6 +149,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);

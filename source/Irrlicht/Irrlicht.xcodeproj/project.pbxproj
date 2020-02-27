@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A7A36BE24075B4600E9B2C1 /* COGLES2Driver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E5733F91C18E2E2003F664E /* COGLES2Driver.cpp */; };
+		0A7A36BF24075B4B00E9B2C1 /* COGLES2ExtensionHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E5733FB1C18E2E2003F664E /* COGLES2ExtensionHandler.cpp */; };
+		0A7A36C024075B4E00E9B2C1 /* COGLES2FixedPipelineRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E5733FD1C18E2E2003F664E /* COGLES2FixedPipelineRenderer.cpp */; };
+		0A7A36C124075B5000E9B2C1 /* COGLES2MaterialRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E5733FF1C18E2E2003F664E /* COGLES2MaterialRenderer.cpp */; };
+		0A7A36C224075B5300E9B2C1 /* COGLES2NormalMapRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E5734011C18E2E2003F664E /* COGLES2NormalMapRenderer.cpp */; };
+		0A7A36C324075B5500E9B2C1 /* COGLES2ParallaxMapRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E5734031C18E2E2003F664E /* COGLES2ParallaxMapRenderer.cpp */; };
+		0A7A36C424075B5B00E9B2C1 /* COGLES2Renderer2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E5734051C18E2E2003F664E /* COGLES2Renderer2D.cpp */; };
+		0A7A36C824075C8C00E9B2C1 /* CEGLManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A7A36C624075C8C00E9B2C1 /* CEGLManager.h */; };
+		0A7A36C924075C8C00E9B2C1 /* CEGLManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0A7A36C724075C8C00E9B2C1 /* CEGLManager.cpp */; };
+		0A7A36D02407722400E9B2C1 /* COGLESDriver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E5733ED1C18E2C0003F664E /* COGLESDriver.cpp */; };
+		0A7A36D12407722700E9B2C1 /* COGLESExtensionHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E5733EF1C18E2C0003F664E /* COGLESExtensionHandler.cpp */; };
 		5E1DF8E11E96BFE100FC3523 /* CIrrDeviceOSX.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5E34C8141B7F535C00F212E8 /* CIrrDeviceOSX.mm */; };
 		5E34C9F91B7F6EBF00F212E8 /* CDefaultGUIElementFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E34C7E21B7F50DE00F212E8 /* CDefaultGUIElementFactory.cpp */; };
 		5E34C9FB1B7F6EBF00F212E8 /* CGUIButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E34C7A91B7F50A900F212E8 /* CGUIButton.cpp */; };
@@ -300,7 +311,6 @@
 		5E34CC111B7F6EC800F212E8 /* CTRTextureGouraudNoZ.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E34C9E41B7F6C6100F212E8 /* CTRTextureGouraudNoZ.cpp */; };
 		5E34CC121B7F6EC900F212E8 /* CTRTextureGouraudWire.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E34C9E51B7F6C6100F212E8 /* CTRTextureGouraudWire.cpp */; };
 		5E34CC131B7F6EC900F212E8 /* CZBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E34C9E61B7F6C6100F212E8 /* CZBuffer.cpp */; };
-		5E34CC191B7F6EC900F212E8 /* CNSOGLManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5E34C9EE1B7F6CCC00F212E8 /* CNSOGLManager.mm */; };
 		5E34CC1A1B7F6EC900F212E8 /* CVideoModeList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E34C9EB1B7F6C8200F212E8 /* CVideoModeList.cpp */; };
 		5E5732B31C18E212003F664E /* CDefaultGUIElementFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E34C7E21B7F50DE00F212E8 /* CDefaultGUIElementFactory.cpp */; };
 		5E5732B41C18E212003F664E /* CGUIButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E34C7A91B7F50A900F212E8 /* CGUIButton.cpp */; };
@@ -770,10 +780,152 @@
 			remoteGlobalIDString = 0ABF407C235340FE0051488C;
 			remoteInfo = tri_fan_microbench;
 		};
+		0A7A369624075B0600E9B2C1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A02C0F823EDF22700CC2C1A /* OpenGLES.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0A90F9BD24065C0C005BA9A8;
+			remoteInfo = MetalANGLE_mac;
+		};
+		0A7A369824075B0600E9B2C1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A02C0F823EDF22700CC2C1A /* OpenGLES.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0A90F77724065B06005BA9A8;
+			remoteInfo = angle_metal_backend_mac;
+		};
+		0A7A369A24075B0600E9B2C1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A02C0F823EDF22700CC2C1A /* OpenGLES.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0A90F75824065AF8005BA9A8;
+			remoteInfo = angle_gl_backend_mac;
+		};
+		0A7A369C24075B0600E9B2C1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A02C0F823EDF22700CC2C1A /* OpenGLES.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0A90F72B24065ADE005BA9A8;
+			remoteInfo = angle_image_util_mac;
+		};
+		0A7A369E24075B0600E9B2C1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A02C0F823EDF22700CC2C1A /* OpenGLES.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0A90F71F24065ACE005BA9A8;
+			remoteInfo = glslang_mac;
+		};
+		0A7A36A024075B0600E9B2C1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A02C0F823EDF22700CC2C1A /* OpenGLES.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0A90F6ED24065AC0005BA9A8;
+			remoteInfo = "spirv-cross_mac";
+		};
+		0A7A36A224075B0600E9B2C1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A02C0F823EDF22700CC2C1A /* OpenGLES.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0A90F6DC24065AB5005BA9A8;
+			remoteInfo = jsoncpp_mac;
+		};
+		0A7A36A424075B0600E9B2C1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A02C0F823EDF22700CC2C1A /* OpenGLES.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0A90F6D124065AA6005BA9A8;
+			remoteInfo = angle_util_mac;
+		};
+		0A7A36A624075B0600E9B2C1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A02C0F823EDF22700CC2C1A /* OpenGLES.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0A90F6BC24065A95005BA9A8;
+			remoteInfo = angle_common_mac;
+		};
+		0A7A36A824075B0600E9B2C1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A02C0F823EDF22700CC2C1A /* OpenGLES.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0A90FA0124065F4B005BA9A8;
+			remoteInfo = sample_util_mac;
+		};
+		0A7A36AA24075B0600E9B2C1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A02C0F823EDF22700CC2C1A /* OpenGLES.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0A90FB4F2406D93C005BA9A8;
+			remoteInfo = hello_triangle_mac;
+		};
+		0A7A36AC24075B0600E9B2C1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A02C0F823EDF22700CC2C1A /* OpenGLES.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0A90FB742406DB53005BA9A8;
+			remoteInfo = multi_texture_mac;
+		};
+		0A7A36AE24075B0600E9B2C1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A02C0F823EDF22700CC2C1A /* OpenGLES.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0A90FB822406DB66005BA9A8;
+			remoteInfo = particle_system_mac;
+		};
+		0A7A36B024075B0600E9B2C1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A02C0F823EDF22700CC2C1A /* OpenGLES.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0A90FB902406DB72005BA9A8;
+			remoteInfo = simple_texture_2d_mac;
+		};
+		0A7A36B224075B0600E9B2C1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A02C0F823EDF22700CC2C1A /* OpenGLES.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0A90FB9E2406DB80005BA9A8;
+			remoteInfo = simple_texture_cubemap_mac;
+		};
+		0A7A36B424075B0600E9B2C1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A02C0F823EDF22700CC2C1A /* OpenGLES.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0A90FBAC2406DB8C005BA9A8;
+			remoteInfo = simple_vertex_shader_mac;
+		};
+		0A7A36B624075B0600E9B2C1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A02C0F823EDF22700CC2C1A /* OpenGLES.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0A90FBBA2406DB99005BA9A8;
+			remoteInfo = texture_wrap_mac;
+		};
+		0A7A36B824075B0600E9B2C1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A02C0F823EDF22700CC2C1A /* OpenGLES.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0A90FBC82406DBA9005BA9A8;
+			remoteInfo = mip_map_2d_mac;
+		};
+		0A7A36BA24075B0600E9B2C1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A02C0F823EDF22700CC2C1A /* OpenGLES.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0A90FBD62406DBB9005BA9A8;
+			remoteInfo = stencil_operations_mac;
+		};
+		0A7A36BC24075B0600E9B2C1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A02C0F823EDF22700CC2C1A /* OpenGLES.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0A90FBE42406DBC8005BA9A8;
+			remoteInfo = tri_fan_microbench_mac;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0A02C0F823EDF22700CC2C1A /* OpenGLES.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OpenGLES.xcodeproj; path = ../../third_party/MetalANGLE/ios/xcode/OpenGLES.xcodeproj; sourceTree = "<group>"; };
+		0A7A36C624075C8C00E9B2C1 /* CEGLManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEGLManager.h; sourceTree = "<group>"; usesTabs = 1; };
+		0A7A36C724075C8C00E9B2C1 /* CEGLManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CEGLManager.cpp; sourceTree = "<group>"; usesTabs = 1; };
 		5E34C6E21B7F4AFB00F212E8 /* aabbox3d.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = aabbox3d.h; path = ../../include/aabbox3d.h; sourceTree = "<group>"; };
 		5E34C6E31B7F4AFB00F212E8 /* CDynamicMeshBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CDynamicMeshBuffer.h; path = ../../include/CDynamicMeshBuffer.h; sourceTree = "<group>"; };
 		5E34C6E41B7F4AFB00F212E8 /* CIndexBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CIndexBuffer.h; path = ../../include/CIndexBuffer.h; sourceTree = "<group>"; };
@@ -1058,7 +1210,7 @@
 		5E34C80D1B7F52AC00F212E8 /* CIrrDeviceStub.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CIrrDeviceStub.cpp; sourceTree = "<group>"; };
 		5E34C80E1B7F52AC00F212E8 /* CIrrDeviceStub.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIrrDeviceStub.h; sourceTree = "<group>"; };
 		5E34C8131B7F535C00F212E8 /* CIrrDeviceOSX.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIrrDeviceOSX.h; sourceTree = "<group>"; };
-		5E34C8141B7F535C00F212E8 /* CIrrDeviceOSX.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = CIrrDeviceOSX.mm; sourceTree = "<group>"; };
+		5E34C8141B7F535C00F212E8 /* CIrrDeviceOSX.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = CIrrDeviceOSX.mm; sourceTree = "<group>"; usesTabs = 1; };
 		5E34C8151B7F540B00F212E8 /* aes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = aes.h; path = aesGladman/aes.h; sourceTree = "<group>"; };
 		5E34C8161B7F540B00F212E8 /* aescrypt.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = aescrypt.cpp; path = aesGladman/aescrypt.cpp; sourceTree = "<group>"; };
 		5E34C8171B7F540B00F212E8 /* aeskey.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = aeskey.cpp; path = aesGladman/aeskey.cpp; sourceTree = "<group>"; };
@@ -1189,7 +1341,7 @@
 		5E34C8971B7F652600F212E8 /* CProfiler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CProfiler.h; sourceTree = "<group>"; };
 		5E34C8981B7F652600F212E8 /* CTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTimer.h; sourceTree = "<group>"; };
 		5E34C8991B7F652600F212E8 /* EProfileIDs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EProfileIDs.h; sourceTree = "<group>"; };
-		5E34C89A1B7F652600F212E8 /* Irrlicht.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = Irrlicht.cpp; sourceTree = "<group>"; };
+		5E34C89A1B7F652600F212E8 /* Irrlicht.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = Irrlicht.cpp; sourceTree = "<group>"; usesTabs = 1; };
 		5E34C89B1B7F652600F212E8 /* leakHunter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = leakHunter.cpp; sourceTree = "<group>"; };
 		5E34C89C1B7F652600F212E8 /* os.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = os.cpp; sourceTree = "<group>"; };
 		5E34C89D1B7F652600F212E8 /* os.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = os.h; sourceTree = "<group>"; };
@@ -1488,14 +1640,14 @@
 		5E5733E61C18E254003F664E /* CIrrDeviceiOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIrrDeviceiOS.h; sourceTree = "<group>"; };
 		5E5733E71C18E254003F664E /* CIrrDeviceiOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CIrrDeviceiOS.mm; sourceTree = "<group>"; };
 		5E5733EC1C18E2C0003F664E /* COGLESCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COGLESCommon.h; sourceTree = "<group>"; };
-		5E5733ED1C18E2C0003F664E /* COGLESDriver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = COGLESDriver.cpp; sourceTree = "<group>"; };
-		5E5733EE1C18E2C0003F664E /* COGLESDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COGLESDriver.h; sourceTree = "<group>"; };
+		5E5733ED1C18E2C0003F664E /* COGLESDriver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = COGLESDriver.cpp; sourceTree = "<group>"; usesTabs = 1; };
+		5E5733EE1C18E2C0003F664E /* COGLESDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COGLESDriver.h; sourceTree = "<group>"; usesTabs = 1; };
 		5E5733EF1C18E2C0003F664E /* COGLESExtensionHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = COGLESExtensionHandler.cpp; sourceTree = "<group>"; };
 		5E5733F01C18E2C0003F664E /* COGLESExtensionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COGLESExtensionHandler.h; sourceTree = "<group>"; };
 		5E5733F11C18E2C0003F664E /* COGLESMaterialRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COGLESMaterialRenderer.h; sourceTree = "<group>"; };
 		5E5733F81C18E2E2003F664E /* COGLES2Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COGLES2Common.h; sourceTree = "<group>"; };
-		5E5733F91C18E2E2003F664E /* COGLES2Driver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = COGLES2Driver.cpp; sourceTree = "<group>"; };
-		5E5733FA1C18E2E2003F664E /* COGLES2Driver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COGLES2Driver.h; sourceTree = "<group>"; };
+		5E5733F91C18E2E2003F664E /* COGLES2Driver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = COGLES2Driver.cpp; sourceTree = "<group>"; usesTabs = 1; };
+		5E5733FA1C18E2E2003F664E /* COGLES2Driver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COGLES2Driver.h; sourceTree = "<group>"; usesTabs = 1; };
 		5E5733FB1C18E2E2003F664E /* COGLES2ExtensionHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = COGLES2ExtensionHandler.cpp; sourceTree = "<group>"; };
 		5E5733FC1C18E2E2003F664E /* COGLES2ExtensionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COGLES2ExtensionHandler.h; sourceTree = "<group>"; };
 		5E5733FD1C18E2E2003F664E /* COGLES2FixedPipelineRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = COGLES2FixedPipelineRenderer.cpp; sourceTree = "<group>"; };
@@ -1554,11 +1706,21 @@
 				0A02C11B23EDF22800CC2C1A /* libglslang.a */,
 				0A02C11D23EDF22800CC2C1A /* libspirv-cross.a */,
 				0A02C11F23EDF22800CC2C1A /* libjsoncpp.a */,
+				0A7A369724075B0600E9B2C1 /* MetalANGLE.framework */,
+				0A7A369924075B0600E9B2C1 /* libangle_metal_backend_mac.a */,
+				0A7A369B24075B0600E9B2C1 /* libangle_gl_backend_mac.a */,
+				0A7A369D24075B0600E9B2C1 /* libangle_image_util_mac.a */,
+				0A7A369F24075B0600E9B2C1 /* libglslang_mac.a */,
+				0A7A36A124075B0600E9B2C1 /* libspirv-cross_mac.a */,
+				0A7A36A324075B0600E9B2C1 /* libjsoncpp_mac.a */,
 				0A02C12123EDF22800CC2C1A /* MetalANGLE_ios_13.0.framework */,
 				0A02C12323EDF22800CC2C1A /* libangle_metal_backend_ios_13.0.a */,
 				0A02C12523EDF22800CC2C1A /* libangle_util.a */,
 				0A02C12723EDF22800CC2C1A /* libangle_common.a */,
+				0A7A36A524075B0600E9B2C1 /* libangle_util_mac.a */,
+				0A7A36A724075B0600E9B2C1 /* libangle_common_mac.a */,
 				0A02C12923EDF22800CC2C1A /* sample_util.framework */,
+				0A7A36A924075B0600E9B2C1 /* sample_util_mac.framework */,
 				0A02C12B23EDF22800CC2C1A /* hello_triangle.app */,
 				0A02C12D23EDF22800CC2C1A /* multi_texture.app */,
 				0A02C12F23EDF22800CC2C1A /* particle_system.app */,
@@ -1569,6 +1731,16 @@
 				0A02C13923EDF22800CC2C1A /* mip_map_2d.app */,
 				0A02C13B23EDF22800CC2C1A /* stencil_operations.app */,
 				0A02C13D23EDF22800CC2C1A /* tri_fan_microbench.app */,
+				0A7A36AB24075B0600E9B2C1 /* hello_triangle_mac.app */,
+				0A7A36AD24075B0600E9B2C1 /* multi_texture_mac.app */,
+				0A7A36AF24075B0600E9B2C1 /* particle_system_mac.app */,
+				0A7A36B124075B0600E9B2C1 /* simple_texture_2d_mac.app */,
+				0A7A36B324075B0600E9B2C1 /* simple_texture_cubemap_mac.app */,
+				0A7A36B524075B0600E9B2C1 /* simple_vertex_shader_mac.app */,
+				0A7A36B724075B0600E9B2C1 /* texture_wrap_mac.app */,
+				0A7A36B924075B0600E9B2C1 /* mip_map_2d_mac.app */,
+				0A7A36BB24075B0600E9B2C1 /* stencil_operations_mac.app */,
+				0A7A36BD24075B0600E9B2C1 /* tri_fan_microbench_mac.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2626,6 +2798,8 @@
 		5E79088C1C10EDF000DFE7FE /* OpenGL Context */ = {
 			isa = PBXGroup;
 			children = (
+				0A7A36C724075C8C00E9B2C1 /* CEGLManager.cpp */,
+				0A7A36C624075C8C00E9B2C1 /* CEGLManager.h */,
 				5E9573D61C18E9E600C27989 /* CEAGLManager.mm */,
 				5E9573D31C18E9B300C27989 /* CEAGLManager.h */,
 				5E34C9ED1B7F6CCC00F212E8 /* CNSOGLManager.h */,
@@ -2641,6 +2815,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A7A36C824075C8C00E9B2C1 /* CEGLManager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2885,6 +3060,146 @@
 			remoteRef = 0A02C13C23EDF22800CC2C1A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		0A7A369724075B0600E9B2C1 /* MetalANGLE.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MetalANGLE.framework;
+			remoteRef = 0A7A369624075B0600E9B2C1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0A7A369924075B0600E9B2C1 /* libangle_metal_backend_mac.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libangle_metal_backend_mac.a;
+			remoteRef = 0A7A369824075B0600E9B2C1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0A7A369B24075B0600E9B2C1 /* libangle_gl_backend_mac.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libangle_gl_backend_mac.a;
+			remoteRef = 0A7A369A24075B0600E9B2C1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0A7A369D24075B0600E9B2C1 /* libangle_image_util_mac.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libangle_image_util_mac.a;
+			remoteRef = 0A7A369C24075B0600E9B2C1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0A7A369F24075B0600E9B2C1 /* libglslang_mac.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libglslang_mac.a;
+			remoteRef = 0A7A369E24075B0600E9B2C1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0A7A36A124075B0600E9B2C1 /* libspirv-cross_mac.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libspirv-cross_mac.a";
+			remoteRef = 0A7A36A024075B0600E9B2C1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0A7A36A324075B0600E9B2C1 /* libjsoncpp_mac.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libjsoncpp_mac.a;
+			remoteRef = 0A7A36A224075B0600E9B2C1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0A7A36A524075B0600E9B2C1 /* libangle_util_mac.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libangle_util_mac.a;
+			remoteRef = 0A7A36A424075B0600E9B2C1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0A7A36A724075B0600E9B2C1 /* libangle_common_mac.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libangle_common_mac.a;
+			remoteRef = 0A7A36A624075B0600E9B2C1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0A7A36A924075B0600E9B2C1 /* sample_util_mac.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = sample_util_mac.framework;
+			remoteRef = 0A7A36A824075B0600E9B2C1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0A7A36AB24075B0600E9B2C1 /* hello_triangle_mac.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = hello_triangle_mac.app;
+			remoteRef = 0A7A36AA24075B0600E9B2C1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0A7A36AD24075B0600E9B2C1 /* multi_texture_mac.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = multi_texture_mac.app;
+			remoteRef = 0A7A36AC24075B0600E9B2C1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0A7A36AF24075B0600E9B2C1 /* particle_system_mac.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = particle_system_mac.app;
+			remoteRef = 0A7A36AE24075B0600E9B2C1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0A7A36B124075B0600E9B2C1 /* simple_texture_2d_mac.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = simple_texture_2d_mac.app;
+			remoteRef = 0A7A36B024075B0600E9B2C1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0A7A36B324075B0600E9B2C1 /* simple_texture_cubemap_mac.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = simple_texture_cubemap_mac.app;
+			remoteRef = 0A7A36B224075B0600E9B2C1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0A7A36B524075B0600E9B2C1 /* simple_vertex_shader_mac.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = simple_vertex_shader_mac.app;
+			remoteRef = 0A7A36B424075B0600E9B2C1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0A7A36B724075B0600E9B2C1 /* texture_wrap_mac.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = texture_wrap_mac.app;
+			remoteRef = 0A7A36B624075B0600E9B2C1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0A7A36B924075B0600E9B2C1 /* mip_map_2d_mac.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = mip_map_2d_mac.app;
+			remoteRef = 0A7A36B824075B0600E9B2C1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0A7A36BB24075B0600E9B2C1 /* stencil_operations_mac.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = stencil_operations_mac.app;
+			remoteRef = 0A7A36BA24075B0600E9B2C1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0A7A36BD24075B0600E9B2C1 /* tri_fan_microbench_mac.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = tri_fan_microbench_mac.app;
+			remoteRef = 0A7A36BC24075B0600E9B2C1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -2964,9 +3279,11 @@
 				5E34CA7C1B7F6EBF00F212E8 /* jcdctmgr.c in Sources */,
 				5E34CA7D1B7F6EBF00F212E8 /* jchuff.c in Sources */,
 				5E34CA7E1B7F6EBF00F212E8 /* jcinit.c in Sources */,
+				0A7A36C324075B5500E9B2C1 /* COGLES2ParallaxMapRenderer.cpp in Sources */,
 				5E34CA7F1B7F6EBF00F212E8 /* jcmainct.c in Sources */,
 				5E34CA801B7F6EBF00F212E8 /* jcmarker.c in Sources */,
 				5E34CA811B7F6EBF00F212E8 /* jcmaster.c in Sources */,
+				0A7A36C124075B5000E9B2C1 /* COGLES2MaterialRenderer.cpp in Sources */,
 				5E34CA821B7F6EC000F212E8 /* jcomapi.c in Sources */,
 				5E34CA841B7F6EC000F212E8 /* jcparam.c in Sources */,
 				5E34CA851B7F6EC000F212E8 /* jcprepct.c in Sources */,
@@ -2974,6 +3291,7 @@
 				5E34CA871B7F6EC000F212E8 /* jctrans.c in Sources */,
 				5E34CA881B7F6EC000F212E8 /* jdapimin.c in Sources */,
 				5E34CA891B7F6EC000F212E8 /* jdapistd.c in Sources */,
+				0A7A36C224075B5300E9B2C1 /* COGLES2NormalMapRenderer.cpp in Sources */,
 				5E34CA8A1B7F6EC000F212E8 /* jdarith.c in Sources */,
 				5E34CA8B1B7F6EC000F212E8 /* jdatadst.c in Sources */,
 				5E34CA8C1B7F6EC000F212E8 /* jdatasrc.c in Sources */,
@@ -3019,12 +3337,14 @@
 				5E34CABD1B7F6EC000F212E8 /* pngwutil.c in Sources */,
 				5E34CABE1B7F6EC000F212E8 /* LzmaDec.c in Sources */,
 				5E34CAC11B7F6EC000F212E8 /* adler32.c in Sources */,
+				0A7A36D02407722400E9B2C1 /* COGLESDriver.cpp in Sources */,
 				5E34CAC21B7F6EC000F212E8 /* compress.c in Sources */,
 				5E34CAC31B7F6EC000F212E8 /* crc32.c in Sources */,
 				5E34CAC51B7F6EC000F212E8 /* deflate.c in Sources */,
 				5E34CAC71B7F6EC000F212E8 /* inffast.c in Sources */,
 				5E34CACA1B7F6EC000F212E8 /* inflate.c in Sources */,
 				5E34CACC1B7F6EC000F212E8 /* inftrees.c in Sources */,
+				0A7A36C924075C8C00E9B2C1 /* CEGLManager.cpp in Sources */,
 				5E34CACE1B7F6EC100F212E8 /* trees.c in Sources */,
 				5E34CAD01B7F6EC100F212E8 /* uncompr.c in Sources */,
 				5E34CAD31B7F6EC100F212E8 /* zutil.c in Sources */,
@@ -3076,6 +3396,7 @@
 				5E34CB2F1B7F6EC200F212E8 /* CSkinnedMesh.cpp in Sources */,
 				5E34CB311B7F6EC200F212E8 /* CSMFMeshFileLoader.cpp in Sources */,
 				5E34CB331B7F6EC200F212E8 /* CSTLMeshFileLoader.cpp in Sources */,
+				0A7A36C024075B4E00E9B2C1 /* COGLES2FixedPipelineRenderer.cpp in Sources */,
 				5E34CB351B7F6EC200F212E8 /* CXMeshFileLoader.cpp in Sources */,
 				5E34CB381B7F6EC200F212E8 /* CParticleAnimatedMeshSceneNodeEmitter.cpp in Sources */,
 				5E34CB3A1B7F6EC200F212E8 /* CParticleAttractionAffector.cpp in Sources */,
@@ -3087,6 +3408,7 @@
 				5E34CB461B7F6EC300F212E8 /* CParticlePointEmitter.cpp in Sources */,
 				5E34CB481B7F6EC300F212E8 /* CParticleRingEmitter.cpp in Sources */,
 				5E34CB4A1B7F6EC300F212E8 /* CParticleRotationAffector.cpp in Sources */,
+				0A7A36BE24075B4600E9B2C1 /* COGLES2Driver.cpp in Sources */,
 				5E34CB4C1B7F6EC300F212E8 /* CParticleScaleAffector.cpp in Sources */,
 				5E34CB4E1B7F6EC300F212E8 /* CParticleSphereEmitter.cpp in Sources */,
 				5E34CB501B7F6EC300F212E8 /* CParticleSystemSceneNode.cpp in Sources */,
@@ -3148,6 +3470,7 @@
 				5E34CBAB1B7F6EC500F212E8 /* IBurningShader.cpp in Sources */,
 				5E34CBB11B7F6EC500F212E8 /* CImageLoaderBMP.cpp in Sources */,
 				5E34CBB31B7F6EC500F212E8 /* CImageLoaderDDS.cpp in Sources */,
+				0A7A36D12407722700E9B2C1 /* COGLESExtensionHandler.cpp in Sources */,
 				5E34CBB51B7F6EC600F212E8 /* CImageLoaderJPG.cpp in Sources */,
 				5E34CBB71B7F6EC600F212E8 /* CImageLoaderPCX.cpp in Sources */,
 				5E34CBB91B7F6EC600F212E8 /* CImageLoaderPNG.cpp in Sources */,
@@ -3157,6 +3480,7 @@
 				5E34CBC11B7F6EC600F212E8 /* CImageLoaderRGB.cpp in Sources */,
 				5E34CBC31B7F6EC600F212E8 /* CImageLoaderTGA.cpp in Sources */,
 				5E34CBC51B7F6EC600F212E8 /* CImageLoaderWAL.cpp in Sources */,
+				0A7A36BF24075B4B00E9B2C1 /* COGLES2ExtensionHandler.cpp in Sources */,
 				5E34CBC71B7F6EC600F212E8 /* CImageWriterBMP.cpp in Sources */,
 				5E34CBC91B7F6EC600F212E8 /* CImageWriterJPG.cpp in Sources */,
 				5E34CBCB1B7F6EC600F212E8 /* CImageWriterPCX.cpp in Sources */,
@@ -3171,6 +3495,7 @@
 				5E7908971C10EF3F00DFE7FE /* COpenGLCacheHandler.cpp in Sources */,
 				5E34CBDE1B7F6EC700F212E8 /* COpenGLDriver.cpp in Sources */,
 				5E34CBE01B7F6EC700F212E8 /* COpenGLExtensionHandler.cpp in Sources */,
+				0A7A36C424075B5B00E9B2C1 /* COGLES2Renderer2D.cpp in Sources */,
 				5E34CBE31B7F6EC700F212E8 /* COpenGLNormalMapRenderer.cpp in Sources */,
 				5E34CBE51B7F6EC700F212E8 /* COpenGLParallaxMapRenderer.cpp in Sources */,
 				5E34CBE71B7F6EC700F212E8 /* COpenGLShaderMaterialRenderer.cpp in Sources */,
@@ -3188,7 +3513,6 @@
 				5E34CC111B7F6EC800F212E8 /* CTRTextureGouraudNoZ.cpp in Sources */,
 				5E34CC121B7F6EC900F212E8 /* CTRTextureGouraudWire.cpp in Sources */,
 				5E34CC131B7F6EC900F212E8 /* CZBuffer.cpp in Sources */,
-				5E34CC191B7F6EC900F212E8 /* CNSOGLManager.mm in Sources */,
 				5E34CC1A1B7F6EC900F212E8 /* CVideoModeList.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3608,6 +3932,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"${PROJECT_DIR}/../../include",
+					"${PROJECT_DIR}/../../third_party/MetalANGLE/include",
+					"${PROJECT_DIR}/../../third_party/MetalANGLE/mac/xcode",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -3642,6 +3971,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"${PROJECT_DIR}/../../include",
+					"${PROJECT_DIR}/../../third_party/MetalANGLE/include",
+					"${PROJECT_DIR}/../../third_party/MetalANGLE/mac/xcode",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = Irrlicht;

@@ -9,7 +9,8 @@
 
 #ifdef _IRR_COMPILE_WITH_OGLES2_
 
-#if defined(_IRR_COMPILE_WITH_IOS_DEVICE_)
+#if defined(_IRR_COMPILE_WITH_IOS_DEVICE_) || defined (_IRR_COMPILE_WITH_OSX_DEVICE_)
+// MetalANGLE headers
 #include <GLES2/gl2.h>
 #include <GLES2/gl2ext.h>
 #include <EGL/eglplatform.h>

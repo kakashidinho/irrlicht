@@ -11,6 +11,12 @@
 
 #if defined(_IRR_COMPILE_WITH_ANDROID_DEVICE_) || defined(_IRR_COMPILE_WITH_FB_DEVICE_) || defined(_IRR_COMPILE_WITH_WINDOWS_DEVICE_) || defined(__EMSCRIPTEN__)
 #include <EGL/egl.h>
+#elif  defined(_IRR_COMPILE_WITH_OSX_DEVICE_)
+// MetalANGLE
+#include <EGL/egl.h>
+#include <EGL/eglplatform.h>
+#include <EGL/eglext.h>
+#include <EGL/eglext_angle.h>
 #else
 #include <GLES/egl.h>
 #endif
@@ -116,6 +122,8 @@ namespace video
 
 		EGLint MajorVersion;
 		EGLint MinorVersion;
+
+		bool CurrentVsync;
 	};
 }
 }
