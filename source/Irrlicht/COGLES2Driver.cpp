@@ -616,13 +616,14 @@ COGLES2Driver::~COGLES2Driver()
 		return true;
 	}
 
+	bool COGLES2Driver::isHardwareBufferRecommend(const scene::IMeshBuffer* mb)
+	{
+		return true;
+	}
 
 	//! Create hardware buffer from meshbuffer
 	COGLES2Driver::SHWBufferLink *COGLES2Driver::createHardwareBuffer(const scene::IMeshBuffer* mb)
 	{
-		if (!mb || (mb->getHardwareMappingHint_Index() == scene::EHM_NEVER && mb->getHardwareMappingHint_Vertex() == scene::EHM_NEVER))
-			return 0;
-
 		SHWBufferLink_opengl *HWBuffer = new SHWBufferLink_opengl(mb);
 
 		//add to map
@@ -637,6 +638,16 @@ COGLES2Driver::~COGLES2Driver()
 		HWBuffer->vbo_indicesID = 0;
 		HWBuffer->vbo_verticesSize = 0;
 		HWBuffer->vbo_indicesSize = 0;
+
+		// Assume dynamic by default
+		if (HWBuffer->Mapped_Index == scene::EHM_NEVER)
+		{
+			HWBuffer->Mapped_Index = scene::EHM_DYNAMIC;
+		}
+		if (HWBuffer->Mapped_Vertex == scene::EHM_NEVER)
+		{
+			HWBuffer->Mapped_Vertex = scene::EHM_DYNAMIC;
+		}
 
 		if (!updateHardwareBuffer(HWBuffer))
 		{
