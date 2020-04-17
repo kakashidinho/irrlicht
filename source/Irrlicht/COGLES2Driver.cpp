@@ -439,8 +439,6 @@ COGLES2Driver::~COGLES2Driver()
 
 		CNullDriver::endScene();
 
-		glFlush();
-
 		if (ContextManager)
 			return ContextManager->swapBuffers();
 
