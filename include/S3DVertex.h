@@ -65,7 +65,7 @@ struct S3DVertex
 	SColor Color;
 
 	//! Texture coordinates
-	core::vector2d<f32> TCoords;
+	alignas(8) core::vector2d<f32> TCoords;
 
 	bool operator==(const S3DVertex& other) const
 	{
@@ -144,7 +144,7 @@ struct S3DVertex2TCoords : public S3DVertex
 	S3DVertex2TCoords(S3DVertex& o) : S3DVertex(o) {}
 
 	//! Second set of texture coordinates
-	core::vector2d<f32> TCoords2;
+	alignas(8) core::vector2d<f32> TCoords2;
 
 	//! Equality operator
 	bool operator==(const S3DVertex2TCoords& other) const
