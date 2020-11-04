@@ -20,7 +20,7 @@ namespace video
 {
 
 CEGLManager::CEGLManager() : IContextManager(), EglWindow(0), EglDisplay(EGL_NO_DISPLAY),
-    EglSurface(EGL_NO_SURFACE), EglContext(EGL_NO_CONTEXT), EglConfig(0), MajorVersion(0), MinorVersion(0)
+    EglSurface(EGL_NO_SURFACE), EglContext(EGL_NO_CONTEXT), EglConfig(0), MajorVersion(0), MinorVersion(0), CurrentVsync(true)
 {
 	#ifdef _DEBUG
 	setDebugName("CEGLManager");
@@ -60,6 +60,30 @@ bool CEGLManager::initialize(const SIrrlichtCreationParameters& params, const SE
 #elif defined(_IRR_COMPILE_WITH_FB_DEVICE_)
 	EglWindow = (NativeWindowType)Data.OpenGLFB.Window;
 	EglDisplay = eglGetDisplay(EGL_DEFAULT_DISPLAY);
+#elif defined(_IRR_COMPILE_WITH_OSX_DEVICE_)
+	// MetalANGLE
+	EglWindow = (EGLNativeWindowType)Data.OpenGLOSX.Window;
+	const EGLint displayAttributes[] =
+	{
+		EGL_PLATFORM_ANGLE_TYPE_ANGLE, EGL_PLATFORM_ANGLE_TYPE_DEFAULT_ANGLE,
+		EGL_PLATFORM_ANGLE_MAX_VERSION_MAJOR_ANGLE, EGL_DONT_CARE,
+		EGL_PLATFORM_ANGLE_MAX_VERSION_MINOR_ANGLE, EGL_DONT_CARE,
+		EGL_NONE,
+	};
+
+	PFNEGLGETPLATFORMDISPLAYEXTPROC eglGetPlatformDisplayEXT = reinterpret_cast<PFNEGLGETPLATFORMDISPLAYEXTPROC>(eglGetProcAddress("eglGetPlatformDisplayEXT"));
+
+	os::Printer::log("Init using metalANGLE");
+
+	if (!eglGetPlatformDisplayEXT)
+	{
+		os::Printer::log("Failed to get eglGetPlatformDisplayEXT");
+		EglDisplay = EGL_NO_DISPLAY;
+		terminate();
+		return false;
+	}
+
+	EglDisplay = eglGetPlatformDisplayEXT(EGL_PLATFORM_ANGLE_ANGLE, (EGLNativeWindowType)EglWindow, displayAttributes);
 #endif
 
 	// We must check if EGL display is valid.
@@ -162,9 +186,6 @@ bool CEGLManager::generateSurface()
 	if (MinorVersion > 1)
 		eglBindAPI(EGL_OPENGL_ES_API);
 #endif
-
-    if (Params.Vsync)
-		eglSwapInterval(EglDisplay, 1);
 
     return true;
 }
@@ -581,6 +602,17 @@ bool CEGLManager::activateContext(const SExposedVideoData& videoData, bool resto
 	{
 		os::Printer::log("Could not make EGL context current.");
 		return false;
+	}
+
+	if (CurrentVsync != Params.Vsync)
+	{
+		os::Printer::log("Setting Vsync settings via eglSwapInterval.");
+		if (Params.Vsync)
+			eglSwapInterval(EglDisplay, 1);
+		else
+			eglSwapInterval(EglDisplay, 0);
+
+		CurrentVsync = Params.Vsync;
 	}
 	return true;
 }

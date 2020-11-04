@@ -16,7 +16,7 @@ CMainMenu::CMainMenu()
 #endif
 	shadows(true), additive(false), transparent(true), vsync(true), aa(true),
 #ifndef _IRR_WINDOWS_
-	driverType(video::EDT_OPENGL)
+	driverType(video::EDT_OGLES2)
 #else
 	driverType(video::EDT_DIRECT3D9)
 #endif
@@ -27,8 +27,8 @@ CMainMenu::CMainMenu()
 
 bool CMainMenu::run()
 {
-	video::E_DRIVER_TYPE driverType = video::EDT_OPENGL;
-	if (!IrrlichtDevice::isDriverSupported(video::EDT_OPENGL))
+	video::E_DRIVER_TYPE driverType = video::EDT_OGLES2;
+	if (!IrrlichtDevice::isDriverSupported(video::EDT_OGLES2))
 		driverType = video::EDT_BURNINGSVIDEO;
 
 	MenuDevice = createDevice(driverType,

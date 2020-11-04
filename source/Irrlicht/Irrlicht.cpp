@@ -65,6 +65,13 @@ namespace irr
 		p.Vsync = vsync;
 		p.EventReceiver = res;
 
+#if defined(NO_IRR_COMPILE_WITH_OGLES1_) && defined(_IRR_COMPILE_WITH_OGLES2_)
+		if (p.DriverType == video::EDT_OGLES1)
+		{
+			// Fallback to GLES 2
+			p.DriverType = video::EDT_OGLES2;
+		}
+#endif
 		return createDeviceEx(p);
 	}
 

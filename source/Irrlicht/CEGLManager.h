@@ -10,6 +10,12 @@
 #ifdef _IRR_COMPILE_WITH_EGL_MANAGER_
 
 #include <EGL/egl.h>
+#if  defined(_IRR_COMPILE_WITH_OSX_DEVICE_)
+// MetalANGLE
+#include <EGL/eglplatform.h>
+#include <EGL/eglext.h>
+#include <EGL/eglext_angle.h>
+#endif
 
 #include "SIrrCreationParameters.h"
 #include "SExposedVideoData.h"
@@ -112,6 +118,8 @@ namespace video
 
 		EGLint MajorVersion;
 		EGLint MinorVersion;
+
+		bool CurrentVsync;
 	};
 }
 }

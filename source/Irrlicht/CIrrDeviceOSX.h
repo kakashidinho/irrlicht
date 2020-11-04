@@ -240,6 +240,8 @@ namespace irr
 		void pollJoysticks();
 
 		NSWindow* Window;
+		NSView* View;
+
         CGDirectDisplayID Display;
 		NSBitmapImageRep* SoftwareDriverTarget;
 		std::map<int,int> KeyCodes;

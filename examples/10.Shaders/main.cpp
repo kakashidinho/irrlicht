@@ -220,8 +220,8 @@ int main()
 	case video::EDT_OGLES2:
 		UseHighLevelShaders=true;
 		{
-			psFileName = "../../media/ogles2.frag";
-			vsFileName = "../../media/ogles2.vert";
+			psFileName = mediaPath + "ogles2.frag";
+			vsFileName = mediaPath + "ogles2.vert";
 		}
 		break;
 	case video::EDT_OPENGL:
