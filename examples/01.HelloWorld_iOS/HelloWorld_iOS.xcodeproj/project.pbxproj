@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A02C14223EDF5A400CC2C1A /* MetalANGLE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A02C14123EDF5A400CC2C1A /* MetalANGLE.framework */; };
+		0A02C14523EDF5DF00CC2C1A /* MetalANGLE.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A02C14123EDF5A400CC2C1A /* MetalANGLE.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5E172FF01C1DB99B0024464F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E172FEF1C1DB99B0024464F /* UIKit.framework */; };
 		5E172FF21C1DB9C80024464F /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E172FF11C1DB9C80024464F /* CoreMotion.framework */; };
-		5E172FF41C1DBA610024464F /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E172FF31C1DBA610024464F /* OpenGLES.framework */; };
 		5E172FF81C1DBAC30024464F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E172FF71C1DBAC30024464F /* Foundation.framework */; };
 		5E172FFC1C1DBB280024464F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E172FFB1C1DBB280024464F /* QuartzCore.framework */; };
 		5E6AC1831C1DA8A100DADD92 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E6AC1821C1DA8A100DADD92 /* main.cpp */; };
@@ -18,7 +19,22 @@
 		5E6AC18D1C1DAD9500DADD92 /* libIrrlicht.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E6AC18C1C1DAD9500DADD92 /* libIrrlicht.a */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		0A02C14423EDF5D600CC2C1A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0A02C14523EDF5DF00CC2C1A /* MetalANGLE.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		0A02C14123EDF5A400CC2C1A /* MetalANGLE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MetalANGLE.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A02C14623EE033400CC2C1A /* 28.HelloWorld_iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = 28.HelloWorld_iOS.entitlements; sourceTree = "<group>"; };
 		5E172FEF1C1DB99B0024464F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5E172FF11C1DB9C80024464F /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		5E172FF31C1DBA610024464F /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -36,9 +52,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A02C14223EDF5A400CC2C1A /* MetalANGLE.framework in Frameworks */,
 				5E172FF21C1DB9C80024464F /* CoreMotion.framework in Frameworks */,
 				5E172FF81C1DBAC30024464F /* Foundation.framework in Frameworks */,
-				5E172FF41C1DBA610024464F /* OpenGLES.framework in Frameworks */,
 				5E172FF01C1DB99B0024464F /* UIKit.framework in Frameworks */,
 				5E172FFC1C1DBB280024464F /* QuartzCore.framework in Frameworks */,
 				5E6AC18D1C1DAD9500DADD92 /* libIrrlicht.a in Frameworks */,
@@ -48,13 +64,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A02C14023EDF5A400CC2C1A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0A02C14123EDF5A400CC2C1A /* MetalANGLE.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5E6AC15F1C1DA6CF00DADD92 = {
 			isa = PBXGroup;
 			children = (
+				0A02C14623EE033400CC2C1A /* 28.HelloWorld_iOS.entitlements */,
 				5E6AC1821C1DA8A100DADD92 /* main.cpp */,
 				5E6AC1851C1DA91500DADD92 /* Libraries */,
 				5E6AC1841C1DA90B00DADD92 /* Products */,
 				5E6AC1861C1DA91E00DADD92 /* Resources */,
+				0A02C14023EDF5A400CC2C1A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,6 +124,7 @@
 				5E6AC1641C1DA6CF00DADD92 /* Sources */,
 				5E6AC1651C1DA6CF00DADD92 /* Frameworks */,
 				5E6AC1661C1DA6CF00DADD92 /* Resources */,
+				0A02C14423EDF5D600CC2C1A /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -118,6 +145,7 @@
 				TargetAttributes = {
 					5E6AC1671C1DA6CF00DADD92 = {
 						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = Q34E86UB49;
 					};
 				};
 			};
@@ -126,6 +154,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -251,13 +280,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = 28.HelloWorld_iOS.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/../../include";
 				INFOPLIST_FILE = "$(SRCROOT)/../../media/info_ios.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../../lib/iOS";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.irrlicht.-8-HelloWorld-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 			};
 			name = Debug;
 		};
@@ -265,13 +298,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = 28.HelloWorld_iOS.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/../../include";
 				INFOPLIST_FILE = "$(SRCROOT)/../../media/info_ios.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../../lib/iOS";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.irrlicht.-8-HelloWorld-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 			};
 			name = Release;
 		};

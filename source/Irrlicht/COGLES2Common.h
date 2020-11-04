@@ -10,8 +10,9 @@
 #ifdef _IRR_COMPILE_WITH_OGLES2_
 
 #if defined(_IRR_COMPILE_WITH_IOS_DEVICE_)
-#include <OpenGLES/ES2/gl.h>
-#include <OpenGLES/ES2/glext.h>
+#include <GLES2/gl2.h>
+#include <GLES2/gl2ext.h>
+#include <EGL/eglplatform.h>
 #elif defined(_IRR_COMPILE_WITH_ANDROID_DEVICE_)
 #include <GLES2/gl2.h>
 #include <GLES2/gl2ext.h>

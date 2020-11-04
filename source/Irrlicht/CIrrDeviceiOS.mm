@@ -15,6 +15,9 @@
 #import <UIKit/UIKit.h>
 #import <CoreMotion/CoreMotion.h>
 
+// MetalANGLE
+#import <MGLKit/MGLKit.h>
+
 /* Important information */
 
 // The application state events and following methods: IrrlichtDevice::isWindowActive, IrrlichtDevice::isWindowFocused
@@ -299,7 +302,7 @@ namespace irr
 
 + (Class)layerClass
 {
-	return [CAEAGLLayer class];
+	return [MGLLayer class];
 }
 
 @end
