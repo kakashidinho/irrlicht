@@ -1117,7 +1117,6 @@ COGLES2Driver::~COGLES2Driver()
 
 		setRenderStates2DMode(false, true, true);
 
-		u16 quad2DIndices[] = { 0, 1, 2, 3 };
 		S3DVertex quad2DVertices[4];
 
 		quad2DVertices[0].Pos = core::vector3df(-1.f, 1.f, 0.f);
@@ -1143,7 +1142,7 @@ COGLES2Driver::~COGLES2Driver()
 		glVertexAttribPointer(EVA_POSITION, 3, GL_FLOAT, false, sizeof(S3DVertex), &(static_cast<const S3DVertex*>(quad2DVertices))[0].Pos);
 		glVertexAttribPointer(EVA_COLOR, 4, GL_UNSIGNED_BYTE, true, sizeof(S3DVertex), &(static_cast<const S3DVertex*>(quad2DVertices))[0].Color);
 		glVertexAttribPointer(EVA_TCOORD0, 2, GL_FLOAT, false, sizeof(S3DVertex), &(static_cast<const S3DVertex*>(quad2DVertices))[0].TCoords);
-		glDrawElements(GL_TRIANGLE_FAN, 4, GL_UNSIGNED_SHORT, quad2DIndices);
+		glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
 		glDisableVertexAttribArray(EVA_TCOORD0);
 		glDisableVertexAttribArray(EVA_COLOR);
 		glDisableVertexAttribArray(EVA_POSITION);
