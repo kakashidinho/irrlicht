@@ -65,20 +65,30 @@ namespace irr
 		p.Vsync = vsync;
 		p.EventReceiver = res;
 
-#if defined(NO_IRR_COMPILE_WITH_OGLES1_) && defined(_IRR_COMPILE_WITH_OGLES2_)
-		if (p.DriverType == video::EDT_OGLES1)
-		{
-			// Fallback to GLES 2
-			p.DriverType = video::EDT_OGLES2;
-		}
-#endif
 		return createDeviceEx(p);
 	}
 
-	extern "C" IRRLICHT_API IrrlichtDevice* IRRCALLCONV createDeviceEx(const SIrrlichtCreationParameters& params)
+	extern "C" IRRLICHT_API IrrlichtDevice* IRRCALLCONV createDeviceEx(const SIrrlichtCreationParameters& originalParams)
 	{
 
 		IrrlichtDevice* dev = 0;
+
+		SIrrlichtCreationParameters params = originalParams;
+#if defined(NO_IRR_COMPILE_WITH_OGLES1_) && defined(_IRR_COMPILE_WITH_OGLES2_)
+		if (params.DriverType == video::EDT_OGLES1)
+		{
+			// Fallback to GLES 2
+			params.DriverType = video::EDT_OGLES2;
+		}
+#endif
+
+#if defined(NO_IRR_COMPILE_WITH_OPENGL_) && defined(_IRR_COMPILE_WITH_OGLES2_)
+		if (params.DriverType == video::EDT_OPENGL)
+		{
+			// Fallback to GLES 2
+			params.DriverType = video::EDT_OGLES2;
+		}
+#endif
 
 #ifdef _IRR_COMPILE_WITH_WINDOWS_DEVICE_
 		if (params.DeviceType == EIDT_WIN32 || (!dev && params.DeviceType == EIDT_BEST))
