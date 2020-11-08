@@ -13,6 +13,8 @@
 #include "EHardwareBufferFlags.h"
 #include "EPrimitiveTypes.h"
 
+#include <memory>
+
 namespace irr
 {
 namespace scene
@@ -176,6 +178,17 @@ namespace scene
 			return 0;
 		}
 
+		// Caching buffer link in this class for faster retrieval
+		class IHWBufferLink
+		{
+		public:
+			virtual ~IHWBufferLink() {}
+		};
+
+		void linkHWBuffer(std::weak_ptr<IHWBufferLink> ref) const { mHWBufferLinkRef = ref; }
+		std::weak_ptr<IHWBufferLink> getHWBufferLinkRef() const { return mHWBufferLinkRef; }
+	private:
+		mutable std::weak_ptr<IHWBufferLink> mHWBufferLinkRef;
 	};
 
 } // end namespace scene

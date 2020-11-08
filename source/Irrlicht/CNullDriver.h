@@ -392,7 +392,8 @@ namespace video
 		}
 
 	protected:
-		struct SHWBufferLink
+		struct SHWBufferLink : public scene::IMeshBuffer::IHWBufferLink,
+							   public std::enable_shared_from_this<SHWBufferLink>
 		{
 			SHWBufferLink(const scene::IMeshBuffer *_MeshBuffer)
 				:MeshBuffer(_MeshBuffer),
@@ -861,7 +862,32 @@ namespace video
 		core::array<SMaterialRenderer> MaterialRenderers;
 
 		//core::array<SHWBufferLink*> HWBufferLinks;
-		core::map< const scene::IMeshBuffer* , SHWBufferLink* > HWBufferMap;
+		struct SHWBufferLinkRef : public std::shared_ptr<SHWBufferLink>
+		{
+			using Super = std::shared_ptr<SHWBufferLink>;
+
+			SHWBufferLinkRef() = default;
+			explicit SHWBufferLinkRef(const SHWBufferLinkRef &src) : Super(src) {}
+			SHWBufferLinkRef(SHWBufferLink *src) : Super(src) {}
+			explicit SHWBufferLinkRef(SHWBufferLinkRef &&src) : Super(std::forward<SHWBufferLinkRef>(src)) {}
+
+			SHWBufferLinkRef &operator=(const SHWBufferLinkRef &src)
+			{
+				Super::operator=(src);
+				return *this;
+			}
+			SHWBufferLinkRef &operator=(SHWBufferLinkRef &&src)
+			{
+				Super::operator=(std::move(src));
+				return *this;
+			}
+			SHWBufferLinkRef &operator=(SHWBufferLink *src)
+			{
+				Super::operator=(SHWBufferLinkRef(src));
+				return *this;
+			}
+		};
+		core::map< const scene::IMeshBuffer* , SHWBufferLinkRef > HWBufferMap;
 
 		io::IFileSystem* FileSystem;
 

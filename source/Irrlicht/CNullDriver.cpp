@@ -1802,23 +1802,34 @@ CNullDriver::SHWBufferLink *CNullDriver::getBufferLink(const scene::IMeshBuffer*
 	if (!mb || !isHardwareBufferRecommend(mb))
 		return 0;
 
-	//search for hardware links
-	core::map< const scene::IMeshBuffer*,SHWBufferLink* >::Node* node = HWBufferMap.find(mb);
-	if (node)
-		return node->getValue();
+	auto bufferLink = static_cast<CNullDriver::SHWBufferLink *>(mb->getHWBufferLinkRef().lock().get());
+	if (bufferLink)
+	{
+		return bufferLink;
+	}
 
-	return createHardwareBuffer(mb); //no hardware links, and mesh wants one, create it
+	//search for hardware links
+	core::map< const scene::IMeshBuffer*,SHWBufferLinkRef >::Node* node = HWBufferMap.find(mb);
+	if (node)
+		return node->getValue().get();
+
+	bufferLink = createHardwareBuffer(mb); //no hardware links, and mesh wants one, create it
+
+	// Cache a weak pointer for faster retrieval
+	mb->linkHWBuffer(bufferLink->shared_from_this());
+
+	return bufferLink;
 }
 
 
 //! Update all hardware buffers, remove unused ones
 void CNullDriver::updateAllHardwareBuffers()
 {
-	core::map<const scene::IMeshBuffer*,SHWBufferLink*>::ParentFirstIterator Iterator=HWBufferMap.getParentFirstIterator();
+	core::map<const scene::IMeshBuffer*,SHWBufferLinkRef>::ParentFirstIterator Iterator=HWBufferMap.getParentFirstIterator();
 
 	for (;!Iterator.atEnd();Iterator++)
 	{
-		SHWBufferLink *Link=Iterator.getNode()->getValue();
+		SHWBufferLink *Link=Iterator.getNode()->getValue().get();
 
 		Link->LastUsed++;
 		if (Link->LastUsed>20000)
@@ -1837,16 +1848,15 @@ void CNullDriver::deleteHardwareBuffer(SHWBufferLink *HWBuffer)
 	if (!HWBuffer)
 		return;
 	HWBufferMap.remove(HWBuffer->MeshBuffer);
-	delete HWBuffer;
 }
 
 
 //! Remove hardware buffer
 void CNullDriver::removeHardwareBuffer(const scene::IMeshBuffer* mb)
 {
-	core::map<const scene::IMeshBuffer*,SHWBufferLink*>::Node* node = HWBufferMap.find(mb);
+	core::map<const scene::IMeshBuffer*,SHWBufferLinkRef >::Node* node = HWBufferMap.find(mb);
 	if (node)
-		deleteHardwareBuffer(node->getValue());
+		deleteHardwareBuffer(node->getValue().get());
 }
 
 
@@ -1854,7 +1864,7 @@ void CNullDriver::removeHardwareBuffer(const scene::IMeshBuffer* mb)
 void CNullDriver::removeAllHardwareBuffers()
 {
 	while (HWBufferMap.size())
-		deleteHardwareBuffer(HWBufferMap.getRoot()->getValue());
+		deleteHardwareBuffer(HWBufferMap.getRoot()->getValue().get());
 }
 
 
