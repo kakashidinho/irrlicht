@@ -80,9 +80,6 @@ namespace video
 		bool updateVertexHardwareBuffer(SHWBufferLink_opengl *HWBuffer);
 		bool updateIndexHardwareBuffer(SHWBufferLink_opengl *HWBuffer);
 
-		//! Harware buffer should always be used
-		virtual bool isHardwareBufferRecommend(const scene::IMeshBuffer* mb) _IRR_OVERRIDE_;
-
 		//! updates hardware buffer if needed
 		virtual bool updateHardwareBuffer(SHWBufferLink *HWBuffer) _IRR_OVERRIDE_;
 
