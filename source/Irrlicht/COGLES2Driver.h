@@ -323,6 +323,12 @@ namespace video
 		//! Used by some SceneNodes to check if a material should be rendered in the transparent render pass
 		virtual bool needsTransparentRenderPass(const irr::video::SMaterial& material) const _IRR_OVERRIDE_;
 
+		//! OpenGL specific
+		virtual const char *getGLVersionString() _IRR_OVERRIDE_;
+
+		//! OpenGL specific
+		virtual const char *getGLExtensionsString() _IRR_OVERRIDE_;
+
 		//! Convert E_BLEND_FACTOR to OpenGL equivalent
 		GLenum getGLBlend(E_BLEND_FACTOR factor) const;
 

@@ -3262,6 +3262,16 @@ bool COGLES1Driver::queryTextureFormat(ECOLOR_FORMAT format) const
 	return getColorFormatParameters(format, dummyInternalFormat, dummyPixelFormat, dummyPixelType, &dummyConverter);
 }
 
+const char *COGLES1Driver::getGLVersionString()
+{
+	return reinterpret_cast<const char *>(glGetString(GL_VERSION));
+}
+
+const char *COGLES1Driver::getGLExtensionsString()
+{
+	return reinterpret_cast<const char *>(glGetString(GL_EXTENSIONS));
+}
+
 bool COGLES1Driver::needsTransparentRenderPass(const irr::video::SMaterial& material) const
 {
 	return CNullDriver::needsTransparentRenderPass(material) || material.isAlphaBlendOperation();

@@ -1531,6 +1531,12 @@ namespace video
 
 		//! Used by some SceneNodes to check if a material should be rendered in the transparent render pass
 		virtual bool needsTransparentRenderPass(const irr::video::SMaterial& material) const = 0;
+
+		//! OpenGL specific
+		virtual const char *getGLVersionString() { return nullptr; }
+
+		//! OpenGL specific
+		virtual const char *getGLExtensionsString() { return nullptr; }
 	};
 
 } // end namespace video

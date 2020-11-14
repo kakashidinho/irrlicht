@@ -1,9 +1,9 @@
-// Copyright (C) 2015 Patryk Nadrowski
+// Copyright (C) 2020 Le Hoang Quyen
 // This file is part of the "Irrlicht Engine".
 // For conditions of distribution and use, see copyright notice in Irrlicht.h
 
-#ifndef __C_EAGL_MANAGER_H_INCLUDED__
-#define __C_EAGL_MANAGER_H_INCLUDED__
+#ifndef __C_MGL_MANAGER_H_INCLUDED__
+#define __C_MGL_MANAGER_H_INCLUDED__
 
 #include "IrrCompileConfig.h"
 
@@ -18,14 +18,14 @@ namespace irr
 namespace video
 {
 	// EAGL manager.
-	class CEAGLManager : public IContextManager
+	class CMGLManager : public IContextManager
 	{
 	public:
 		//! Constructor.
-		CEAGLManager();
+		CMGLManager();
 
 		//! Destructor.
-		virtual ~CEAGLManager();
+		virtual ~CMGLManager();
 
 		// Initialize EAGL.
 		/* This method checks if a view has CAEAGLLayer and grabs it if it does, anyway surface and context
@@ -62,23 +62,10 @@ namespace video
 	private:
 		SIrrlichtCreationParameters Params;
 		SExposedVideoData Data;
-
+		
 		bool Configured;
-
+        
         void* DataStorage;
-
-		struct SFrameBuffer
-		{
-			SFrameBuffer() : BufferID(0), ColorBuffer(0), DepthBuffer(0)
-			{
-			}
-
-			u32 BufferID;
-			u32 ColorBuffer;
-			u32 DepthBuffer;
-		};
-
-		SFrameBuffer FrameBuffer;
 	};
 }
 }

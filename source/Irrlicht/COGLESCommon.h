@@ -9,9 +9,13 @@
 
 #ifdef _IRR_COMPILE_WITH_OGLES1_
 
-#if defined(_IRR_COMPILE_WITH_IOS_DEVICE_)
-#include <OpenGLES/ES1/gl.h>
-#include <OpenGLES/ES1/glext.h>
+#if  defined (_IRR_COMPILE_WITH_OSX_DEVICE_)
+// MetalANGLE headers
+#include <GLES/gl.h>
+#include <GLES/glext.h>
+#include <EGL/eglplatform.h>
+#elif defined(_IRR_COMPILE_WITH_IOS_DEVICE_)
+#include "CMGLOrEAGLFunctions.h"
 #elif defined(_IRR_COMPILE_WITH_ANDROID_DEVICE_)
 #include <GLES/gl.h>
 #include <GLES/glext.h>
@@ -26,7 +30,7 @@ typedef char GLchar;
 #endif
 
 #ifndef GL_BGRA
-#define GL_BGRA 0x80E1;
+#define GL_BGRA 0x80E1
 #endif
 
 // Blending definitions.

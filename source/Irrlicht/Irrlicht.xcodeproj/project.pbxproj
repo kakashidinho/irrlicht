@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A125AA9255FC9E90036BB20 /* CMGLManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0A125A69255FC9E80036BB20 /* CMGLManager.mm */; };
+		0A125AAA255FC9E90036BB20 /* CMGLOrEAGLFunctions.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0A125AA6255FC9E80036BB20 /* CMGLOrEAGLFunctions.mm */; };
+		0A125AAB255FC9E90036BB20 /* CMGLManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A125AA7255FC9E80036BB20 /* CMGLManager.h */; };
+		0A125AAC255FC9E90036BB20 /* CMGLOrEAGLFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A125AA8255FC9E90036BB20 /* CMGLOrEAGLFunctions.h */; };
 		0A7A36BE24075B4600E9B2C1 /* COGLES2Driver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E5733F91C18E2E2003F664E /* COGLES2Driver.cpp */; };
 		0A7A36BF24075B4B00E9B2C1 /* COGLES2ExtensionHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E5733FB1C18E2E2003F664E /* COGLES2ExtensionHandler.cpp */; };
 		0A7A36C024075B4E00E9B2C1 /* COGLES2FixedPipelineRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E5733FD1C18E2E2003F664E /* COGLES2FixedPipelineRenderer.cpp */; };
@@ -926,6 +930,10 @@
 
 /* Begin PBXFileReference section */
 		0A02C0F823EDF22700CC2C1A /* OpenGLES.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OpenGLES.xcodeproj; path = ../../third_party/MetalANGLE/ios/xcode/OpenGLES.xcodeproj; sourceTree = "<group>"; };
+		0A125A69255FC9E80036BB20 /* CMGLManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CMGLManager.mm; sourceTree = "<group>"; };
+		0A125AA6255FC9E80036BB20 /* CMGLOrEAGLFunctions.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CMGLOrEAGLFunctions.mm; sourceTree = "<group>"; };
+		0A125AA7255FC9E80036BB20 /* CMGLManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGLManager.h; sourceTree = "<group>"; };
+		0A125AA8255FC9E90036BB20 /* CMGLOrEAGLFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMGLOrEAGLFunctions.h; sourceTree = "<group>"; };
 		0A7A36C624075C8C00E9B2C1 /* CEGLManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEGLManager.h; sourceTree = "<group>"; usesTabs = 1; };
 		0A7A36C724075C8C00E9B2C1 /* CEGLManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CEGLManager.cpp; sourceTree = "<group>"; usesTabs = 1; };
 		5E34C6E21B7F4AFB00F212E8 /* aabbox3d.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = aabbox3d.h; path = ../../include/aabbox3d.h; sourceTree = "<group>"; };
@@ -2804,6 +2812,10 @@
 		5E79088C1C10EDF000DFE7FE /* OpenGL Context */ = {
 			isa = PBXGroup;
 			children = (
+				0A125AA7255FC9E80036BB20 /* CMGLManager.h */,
+				0A125A69255FC9E80036BB20 /* CMGLManager.mm */,
+				0A125AA8255FC9E90036BB20 /* CMGLOrEAGLFunctions.h */,
+				0A125AA6255FC9E80036BB20 /* CMGLOrEAGLFunctions.mm */,
 				0A7A36C724075C8C00E9B2C1 /* CEGLManager.cpp */,
 				0A7A36C624075C8C00E9B2C1 /* CEGLManager.h */,
 				5E9573D61C18E9E600C27989 /* CEAGLManager.mm */,
@@ -3695,6 +3707,7 @@
 				5E5733531C18E212003F664E /* CAnimatedMeshMD2.cpp in Sources */,
 				5E5733541C18E212003F664E /* CAnimatedMeshMD3.cpp in Sources */,
 				5E5733551C18E212003F664E /* CB3DMeshFileLoader.cpp in Sources */,
+				0A125AAA255FC9E90036BB20 /* CMGLOrEAGLFunctions.mm in Sources */,
 				5E5733561C18E212003F664E /* CBSPMeshFileLoader.cpp in Sources */,
 				5E5733571C18E212003F664E /* CColladaFileLoader.cpp in Sources */,
 				5E5733581C18E212003F664E /* CCSMLoader.cpp in Sources */,
@@ -3820,6 +3833,7 @@
 				5E5733CA1C18E212003F664E /* COpenGLNormalMapRenderer.cpp in Sources */,
 				5E5733CB1C18E212003F664E /* COpenGLParallaxMapRenderer.cpp in Sources */,
 				5E5733CC1C18E212003F664E /* COpenGLShaderMaterialRenderer.cpp in Sources */,
+				0A125AA9255FC9E90036BB20 /* CMGLManager.mm in Sources */,
 				5E5733CD1C18E212003F664E /* COpenGLSLMaterialRenderer.cpp in Sources */,
 				5E5733CE1C18E212003F664E /* CSoftwareDriver.cpp in Sources */,
 				5E5733CF1C18E212003F664E /* CSoftwareTexture.cpp in Sources */,

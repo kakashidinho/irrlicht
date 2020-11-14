@@ -10,15 +10,8 @@
 #include "os.h"
 
 #import <UIKit/UIKit.h>
-#import <MGLKit/MGLKit.h>
 
-#if defined(_IRR_COMPILE_WITH_OGLES1_)
-#include <GLES/gl.h>
-#include <GLES/glext.h>
-#elif defined(_IRR_COMPILE_WITH_OGLES2_)
-#include <GLES2/gl2.h>
-#include <GLES2/gl2ext.h>
-#endif
+#include "CMGLOrEAGLFunctions.h"
 
 namespace irr
 {
@@ -31,8 +24,8 @@ struct SEAGLManagerDataStorage
 	{
 	}
 
-	MGLLayer* Layer;
-	MGLContext* Context;
+	CAEAGLLayer* Layer;
+	id Context;
 };
 
 CEAGLManager::CEAGLManager() : IContextManager(), Configured(false), DataStorage(0)
@@ -65,13 +58,13 @@ bool CEAGLManager::initialize(const SIrrlichtCreationParameters& params, const S
 
 	UIView* view = (__bridge UIView*)data.OpenGLiOS.View;
 
-	if (view == nil || ![[view layer] isKindOfClass:[MGLLayer class]])
+	if (view == nil || ![[view layer] isKindOfClass:[CAEAGLLayer class]])
 	{
 		os::Printer::log("Could not get EAGL display.");
 		return false;
 	}
-	
-	dataStorage->Layer = (MGLLayer*)[view layer];
+
+	dataStorage->Layer = (CAEAGLLayer*)[view layer];
 	dataStorage->Layer.contentsScale = view.contentScaleFactor;
 
     return true;
@@ -80,9 +73,9 @@ bool CEAGLManager::initialize(const SIrrlichtCreationParameters& params, const S
 void CEAGLManager::terminate()
 {
 	SEAGLManagerDataStorage* dataStorage = static_cast<SEAGLManagerDataStorage*>(DataStorage);
-	
-	[MGLContext setCurrentContext:0];
-	
+
+	[EAGLContextClass setCurrentContext:0];
+
 	destroySurface();
 
     if (dataStorage->Layer != nil)
@@ -92,20 +85,24 @@ void CEAGLManager::terminate()
 bool CEAGLManager::generateSurface()
 {
 	SEAGLManagerDataStorage* dataStorage = static_cast<SEAGLManagerDataStorage*>(DataStorage);
-	MGLLayer* layer = dataStorage->Layer;
-	
+	CAEAGLLayer* layer = dataStorage->Layer;
+
     if (layer == nil)
         return false;
 
 	if (Configured)
 		return true;
 
+	NSDictionary* attribs = [NSDictionary dictionaryWithObjectsAndKeys:
+		[NSNumber numberWithBool:NO],
+		kEAGLDrawablePropertyRetainedBackingValue,
+		(Params.Bits > 16) ? kEAGLColorFormatRGBA8Value : kEAGLColorFormatRGB565Value,
+		kEAGLDrawablePropertyColorFormatValue,
+		nil];
+
 	[layer setOpaque:(Params.WithAlphaChannel) ? YES : NO];
-	layer.drawableColorFormat   = (Params.Bits > 16) ? MGLDrawableColorFormatRGB565 :
-        MGLDrawableColorFormatRGBA8888;
-	layer.drawableDepthFormat   = MGLDrawableDepthFormat24;
-	layer.drawableStencilFormat = MGLDrawableStencilFormat8;
-	
+	[layer setDrawableProperties:attribs];
+
 	Configured = true;
 
     return true;
@@ -114,13 +111,14 @@ bool CEAGLManager::generateSurface()
 void CEAGLManager::destroySurface()
 {
 	SEAGLManagerDataStorage* dataStorage = static_cast<SEAGLManagerDataStorage*>(DataStorage);
-	MGLLayer* layer = dataStorage->Layer;
-	
+	CAEAGLLayer* layer = dataStorage->Layer;
+
 	if (layer == nil)
 		return;
 
 	[layer setOpaque:NO];
-	
+	[layer setDrawableProperties:nil];
+
 	Configured = false;
 }
 
@@ -131,29 +129,28 @@ bool CEAGLManager::generateContext()
     if (dataStorage->Context != nil || !Configured)
         return false;
 
-	MGLRenderingAPI OpenGLESVersion = kMGLRenderingAPIOpenGLES2;
+	EAGLRenderingAPI OpenGLESVersion = kEAGLRenderingAPIOpenGLES2;
 
 	switch (Params.DriverType)
 	{
 	case EDT_OGLES1:
-		OpenGLESVersion = kMGLRenderingAPIOpenGLES1;
+		OpenGLESVersion = kEAGLRenderingAPIOpenGLES1;
 		break;
 	case EDT_OGLES2:
-		OpenGLESVersion = kMGLRenderingAPIOpenGLES2;
+		OpenGLESVersion = kEAGLRenderingAPIOpenGLES2;
 		break;
 	default:
 		break;
 	}
 
-    if (OpenGLESVersion == kMGLRenderingAPIOpenGLES2) {
-        dataStorage->Context = [[MGLContext alloc] initWithAPI: kMGLRenderingAPIOpenGLES3];
+    if (OpenGLESVersion == kEAGLRenderingAPIOpenGLES2) {
+        dataStorage->Context = [[EAGLContextClass alloc] initWithAPI:kEAGLRenderingAPIOpenGLES3];
 
         if (dataStorage->Context == nil)
-            dataStorage->Context = [[MGLContext alloc] initWithAPI: kMGLRenderingAPIOpenGLES2];
+            dataStorage->Context = [[EAGLContextClass alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
     } else {
-        dataStorage->Context = [[MGLContext alloc] initWithAPI:OpenGLESVersion];
+        dataStorage->Context = [[EAGLContextClass alloc] initWithAPI:OpenGLESVersion];
     }
-    dataStorage->Context = [[MGLContext alloc] initWithAPI:OpenGLESVersion];
 
 	if (dataStorage->Context == nil)
 	{
@@ -172,8 +169,28 @@ void CEAGLManager::destroyContext()
 {
 	SEAGLManagerDataStorage* dataStorage = static_cast<SEAGLManagerDataStorage*>(DataStorage);
 
-	[MGLContext setCurrentContext:0];
-	
+	[dataStorage->Context renderbufferStorage:GL_RENDERBUFFER_OES fromDrawable:nil];
+
+	if (FrameBuffer.BufferID != 0)
+	{
+		glDeleteFramebuffersOES(1, &FrameBuffer.BufferID);
+		FrameBuffer.BufferID = 0;
+	}
+
+	if (FrameBuffer.ColorBuffer != 0)
+	{
+		glDeleteRenderbuffersOES(1, &FrameBuffer.ColorBuffer);
+		FrameBuffer.ColorBuffer = 0;
+	}
+
+	if (FrameBuffer.DepthBuffer != 0)
+	{
+		glDeleteRenderbuffersOES(1, &FrameBuffer.DepthBuffer);
+		FrameBuffer.DepthBuffer = 0;
+	}
+
+	[EAGLContextClass setCurrentContext:0];
+
     if (dataStorage->Context != nil)
         dataStorage->Context = 0;
 
@@ -183,18 +200,43 @@ void CEAGLManager::destroyContext()
 bool CEAGLManager::activateContext(const SExposedVideoData& videoData, bool restorePrimaryOnZero)
 {
 	SEAGLManagerDataStorage* dataStorage = static_cast<SEAGLManagerDataStorage*>(DataStorage);
-	MGLContext* context = dataStorage->Context;
-	
+	id context = dataStorage->Context;
+
 	bool status = false;
 
 	if (context != nil)
 	{
-		status = ([MGLContext currentContext] == context ||
-				  [MGLContext setCurrentContext:context forLayer:dataStorage->Layer]);
+		status = ([EAGLContextClass currentContext] == context ||
+				  [EAGLContextClass setCurrentContext:context]);
 	}
 
 	if (status)
 	{
+		if (FrameBuffer.ColorBuffer == 0)
+		{
+			glGenRenderbuffersOES(1, &FrameBuffer.ColorBuffer);
+			glBindRenderbufferOES(GL_RENDERBUFFER_OES, FrameBuffer.ColorBuffer);
+			[context renderbufferStorage:GL_RENDERBUFFER_OES fromDrawable:dataStorage->Layer];
+		}
+
+		if (FrameBuffer.DepthBuffer == 0)
+		{
+			GLenum depth = (Params.ZBufferBits >= 24) ? GL_DEPTH_COMPONENT24_OES : GL_DEPTH_COMPONENT16_OES;
+
+			glGenRenderbuffersOES(1, &FrameBuffer.DepthBuffer);
+			glBindRenderbufferOES(GL_RENDERBUFFER_OES, FrameBuffer.DepthBuffer);
+			glRenderbufferStorageOES(GL_RENDERBUFFER_OES, depth, Params.WindowSize.Width, Params.WindowSize.Height);
+		}
+
+		if (FrameBuffer.BufferID == 0)
+		{
+			glGenFramebuffersOES(1, &FrameBuffer.BufferID);
+			glBindFramebufferOES(GL_FRAMEBUFFER_OES, FrameBuffer.BufferID);
+			glFramebufferRenderbufferOES(GL_FRAMEBUFFER_OES, GL_COLOR_ATTACHMENT0_OES, GL_RENDERBUFFER_OES, FrameBuffer.ColorBuffer);
+			glFramebufferRenderbufferOES(GL_FRAMEBUFFER_OES, GL_DEPTH_ATTACHMENT_OES, GL_RENDERBUFFER_OES, FrameBuffer.DepthBuffer);
+		}
+
+		glBindFramebufferOES(GL_FRAMEBUFFER_OES, FrameBuffer.BufferID);
 	}
 	else
 	{
@@ -212,13 +254,16 @@ const SExposedVideoData& CEAGLManager::getContext() const
 bool CEAGLManager::swapBuffers()
 {
 	SEAGLManagerDataStorage* dataStorage = static_cast<SEAGLManagerDataStorage*>(DataStorage);
-	MGLContext* context = dataStorage->Context;
-	
+	id context = dataStorage->Context;
+
 	bool status = false;
-	
-	if (context != nil && context == [MGLContext currentContext])
+
+	if (context != nil && context == [EAGLContextClass currentContext])
 	{
-		status = [context present:dataStorage->Layer];
+		glBindRenderbufferOES(GL_RENDERBUFFER_OES, FrameBuffer.ColorBuffer);
+		[context presentRenderbuffer:GL_RENDERBUFFER_OES];
+
+		status = true;
 	}
 
     return status;

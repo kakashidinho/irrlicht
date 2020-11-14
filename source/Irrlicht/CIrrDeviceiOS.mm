@@ -8,9 +8,12 @@
 
 #ifdef _IRR_COMPILE_WITH_IOS_DEVICE_
 
+#include "CMGLOrEAGLFunctions.h"
+
 #include "IFileSystem.h"
 #include "CTimer.h"
 #include "CEAGLManager.h"
+#include "CMGLManager.h"
 
 #import <UIKit/UIKit.h>
 #import <CoreMotion/CoreMotion.h>
@@ -299,6 +302,21 @@ namespace irr
 @end
 
 @implementation CIrrViewEAGLiOS
+
++ (Class)layerClass
+{
+	return [CAEAGLLayer class];
+}
+
+@end
+
+/* CIrrViewMGLiOS */
+
+@interface CIrrViewMGLiOS : CIrrViewiOS
+
+@end
+
+@implementation CIrrViewMGLiOS
 
 + (Class)layerClass
 {
@@ -770,6 +788,9 @@ namespace irr
             case video::EDT_OGLES1:
 #ifdef _IRR_COMPILE_WITH_OGLES1_
                 {
+					// Use native GLES1 implementation
+					video::mgl_eagl::load(/* fromMGL */ false);
+
 					CIrrViewEAGLiOS* view = [[CIrrViewEAGLiOS alloc] initWithFrame:resolution forDevice:this];
 					view.contentScaleFactor = dataStorage->Window.screen.nativeScale;
 					view.Scale = view.contentScaleFactor;
@@ -798,7 +819,10 @@ namespace irr
 			case video::EDT_OGLES2:
 #ifdef _IRR_COMPILE_WITH_OGLES2_
 				{
-					CIrrViewEAGLiOS* view = [[CIrrViewEAGLiOS alloc] initWithFrame:resolution forDevice:this];
+					// Use MetalANGLE implementation
+					video::mgl_eagl::load(/* fromMGL */ true);
+
+					CIrrViewMGLiOS* view = [[CIrrViewMGLiOS alloc] initWithFrame:resolution forDevice:this];
                     view.contentScaleFactor = dataStorage->Window.screen.nativeScale;
                     view.Scale = view.contentScaleFactor;
                     CreationParams.WindowSize =
@@ -810,7 +834,7 @@ namespace irr
 					dataStorage->View = view;
 					data.OpenGLiOS.View = (__bridge void*)view;
 
-					ContextManager = new video::CEAGLManager();
+					ContextManager = new video::CMGLManager();
 					ContextManager->initialize(CreationParams, data);
 
 					VideoDriver = video::createOGLES2Driver(CreationParams, FileSystem, ContextManager);

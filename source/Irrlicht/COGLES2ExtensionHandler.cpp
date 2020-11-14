@@ -40,7 +40,7 @@ namespace video
 		glGetIntegerv(GL_MAX_TEXTURE_SIZE, &val);
 		MaxTextureSize=static_cast<u32>(val);
 	#ifdef GL_EXT_texture_lod_bias
-		if (FeatureAvailable[IRR_EXT_texture_lod_bias])
+		if (FeatureAvailable[IRR_GL_EXT_texture_lod_bias])
 			glGetFloatv(GL_MAX_TEXTURE_LOD_BIAS_EXT, &MaxTextureLODBias);
 	#endif
 		glGetFloatv(GL_ALIASED_LINE_WIDTH_RANGE, DimAliasedLine);

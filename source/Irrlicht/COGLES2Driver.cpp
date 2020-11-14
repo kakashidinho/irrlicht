@@ -2144,7 +2144,7 @@ COGLES2Driver::~COGLES2Driver()
 		GLenum incr = GL_INCR;
 
 #if defined(GL_OES_stencil_wrap)
-		if (FeatureAvailable[IRR_OES_stencil_wrap])
+		if (FeatureAvailable[IRR_GL_OES_stencil_wrap])
 		{
 			decr = GL_DECR_WRAP_OES;
 			incr = GL_INCR_WRAP_OES;
@@ -2993,6 +2993,16 @@ COGLES2Driver::~COGLES2Driver()
 	bool COGLES2Driver::needsTransparentRenderPass(const irr::video::SMaterial& material) const
 	{
 		return CNullDriver::needsTransparentRenderPass(material) || material.isAlphaBlendOperation();
+	}
+
+	const char *COGLES2Driver::getGLVersionString()
+	{
+		return reinterpret_cast<const char *>(glGetString(GL_VERSION));
+	}
+
+	const char *COGLES2Driver::getGLExtensionsString()
+	{
+		return reinterpret_cast<const char *>(glGetString(GL_EXTENSIONS));
 	}
 
 	const SMaterial& COGLES2Driver::getCurrentMaterial() const
